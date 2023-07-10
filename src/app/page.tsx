@@ -1,8 +1,19 @@
+'use client'
 import { FC } from "react"
+import { signIn, useSession } from "next-auth/react"
 
 const Home: FC = () => {
+
+  const { data }  = useSession()
   return (
-    <h1>App</h1>
+    <div className="">
+
+      <button onClick={() => signIn()}>
+        Login
+      </button>
+
+      <h1>{data?.user?.name}</h1>
+    </div>
   )
 }
 
