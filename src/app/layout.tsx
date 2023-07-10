@@ -3,15 +3,19 @@ import { FC, ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { NextAuthProvider } from '@/providers/auth'
+import { Header } from '@/components/header'
 
-const poppins = Poppins({ subsets: ['latin'] , weight: [ '400', '500', '600', '700', '800', '900']})
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+})
 
 export const metadata: Metadata = {
   title: 'FSW Trips',
   description: 'Sistemas de reservas de viagens',
 }
 
-type LayoutProps =  {
+type LayoutProps = {
   children: ReactNode
 }
 
@@ -20,6 +24,7 @@ const RootLayout: FC<LayoutProps> = ({ children }) => {
     <html lang="en">
       <body className={poppins.className}>
         <NextAuthProvider>
+          <Header />
           {children}
         </NextAuthProvider>
       </body>
